@@ -1,0 +1,101 @@
+<template>
+	<div class="bodyCSS">
+		<a href="" onclick={handleProcess}>
+			<img class="slds-card logoCSS"
+				src="https://i.ibb.co/71yMFd3/Salesforce-Chat-GPT-Logo.gif" alt="Salesforce-Chat-GPT-Logo"
+				title="⚡Salesforce⚡+Chat-GPT" border="0">
+		</a>
+		<template if:true={isOpen}>
+			<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open sectionCSS">
+				<div class="slds-modal__container">
+					<header>
+						<button style="float:right"
+							class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={close}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+							<span class="slds-assistive-text">Close</span>
+						</button>
+					</header>
+					<!-- modal body start -->
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+						<label for=""><span style="color: red;">*</span><u><b>Enter your query Here 👇👇
+								</b></u></label>
+						<br />
+						<lightning-layout multiple-rows="true">
+							<lightning-layout-item class="slds-p-around_xx-small" size=10>
+								<lightning-textarea name="input7" if:true={EXAMPLES_MSG} placeholder={EXAMPLES_MSG}
+									message-when-value-missing="This field is required." onchange={updateSearchQuery}
+									variant="label-hidden" label="Enter your query" required></lightning-textarea>
+							</lightning-layout-item>
+
+							<lightning-layout-item class="slds-p-around_xx-small" size=2>
+								<span if:true={isSearchEnabled} class="searchBtnCSS" onclick={fetchResponse}>
+									<lightning-button-icon icon-name="standard:search" title="Search..."
+										tooltip="Search your query from Chat GPT" size="large" variant="bare"
+										alternative-text="Search"
+										class="slds-m-left_xx-small"></lightning-button-icon>Search
+								</span>
+							</lightning-layout-item>
+						</lightning-layout>
+
+						<div if:true={isSpinner}>
+							<center>
+								<img class="loadingCSS"
+									src="https://thumbs.gfycat.com/ConventionalOblongFairybluebird-max-1mb.gif"
+									alt="Loading your Details" border="0">
+							</center>
+							<div class="slds-backdrop slds-backdrop_open"></div>
+						</div>
+						<br />
+						<div class="gptResponseCSS" if:true={responseFromGPT}>
+							<div class="slds-p-around_medium lgc-bg">
+								<center>⚡⚡Below is your query Response/Code⚡⚡👇👇
+									<lightning-helptext icon-name="action:info"
+										content={HELP_TXT_MSG}></lightning-helptext>
+								</center>
+							</div>
+							<br />
+							<pre class="preCSS">
+							<code>
+								<lightning-formatted-rich-text disable-linkify value={responseFromGPT}></lightning-formatted-rich-text>
+							</code>
+						</pre>
+							<br />
+						</div>
+						<div class="catchErrMsgCSS" if:true={catchErrorMessage}>
+							<center>
+								<marquee style="color: rgb(22, 42, 231);font-size:22px">
+									<i>
+										<u>🤫Oops 404 Not Found!!!🤫</u>
+									</i>
+								</marquee>
+								<br />
+							</center>
+							<pre class="preCSS">
+								<lightning-formatted-text disable-linkify value={catchErrorMessage}></lightning-formatted-text>
+							</pre>
+							<br />
+						</div>
+						<div class="extraLinkMsgCSS" if:true={chatGPTLinkInforBlock}>
+							<br />
+							<b>
+								<u>
+									<ol>Note:- Tag Based language not supported (HTML,XML,.Cmp,VF Page)</ol>
+									<br />
+									<marquee>
+										<p>To get Full Response Information 👉👉 <a style='font-size: 20px;'
+												href='https://chat.openai.com/chat' target="_blank">✨✨✨</a></p>
+									</marquee>
+								</u>
+							</b>
+							<br />
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+	</div>
+</template>

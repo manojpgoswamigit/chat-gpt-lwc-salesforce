@@ -1,0 +1,58 @@
+.bodyCSS {
+    font-size: 18px;
+}
+.logoCSS {
+    width: 25.5rem;
+    height: 22rem;
+    border-radius: 0.5rem;
+    box-shadow: 10px 10px 10px rgb(0 0 0 / 50%);
+}
+.loadingCSS {
+    width: 8.5rem;
+    height: 8rem;
+}
+.sectionCSS {
+    box-shadow: 17px 20px 20px 7px rgb(0 0 0 / 50%);
+}
+.gptResponseCSS {
+    margin-top: 0.5rem;
+    box-shadow: rgb(70 62 62) 16px 12px 20px 0px;
+    padding: 1rem;
+    border-top-left-radius: 5rem;
+    border-style: inset;
+    font-weight: 550;
+    border-bottom-right-radius: 5rem;
+    background: #3494E6;
+    background: -webkit-linear-gradient(to left, #EC6EAD, #3494E6);
+    background: linear-gradient(to left, #EC6EAD, #3494E6);
+}
+.searchBtnCSS {
+    background: #3494E6;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px dotted black;
+    padding: 0.3rem;
+    cursor: pointer;
+    display: inline-block;
+}
+.catchErrMsgCSS {
+    margin: 0.5rem 2rem;
+    background: #f56262;
+    padding: 1rem;
+    color: black;
+    border-radius: 22px;
+    font-weight: 550;
+    border-style: inset;
+    box-shadow: rgb(70 62 62) 16px 12px 20px 0px;
+}
+.extraLinkMsgCSS {
+    background: rgb(117, 245, 166);
+    margin-top: 1rem;
+    padding-left: 12px;
+    border-radius: 22px;
+    box-shadow: rgb(70 62 62) 16px 12px 20px 0px;
+}
+.preCSS {
+    white-space: pre-wrap;
+}
